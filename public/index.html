@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+
+
+
+    <div id="mainmenu-container" class="mainmenu-container">
+        <div class="menu-ui">
+            <div class="menutitle">Socket IO testing</div>
+            <div class="menubuttons">
+                <input class="menubutton" type="button" value="Play" onclick="CreateUsername()">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div id="username-container" class="username-container">
+        <div class="input-container">
+            <div class="enterUsernameText">Enter your username:</div>
+            <input type="text" autocomplete="off" id="username" class="inputUsername" placeholder="Username" />
+            <button id="join" class="joinButton" onclick="Join()">Join</button>
+            <button class="joinButton" onclick="MainMenu()">Back</button>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="lobby-container" class="lobby-container">
+
+        <div id="PlayerStatus" class="PlayerStatus">
+            <div id="usernamelabel" class="usernamelabel"></div>
+        </div>
+
+        <div class="console-container">
+            <textarea readonly id="console" class="console">Console:</textarea>
+
+            <table id="PlayerTable"  class="PlayerTable">
+                <tr>
+                    <td>
+                        Username
+                    </td>
+                    <td>
+                        Status
+                    </td>
+                </tr>
+            </table>
+
+            <button id="ReadyButton" class="ReadyButton" onclick="Ready()">Ready</button>
+            <button id="CancelReadyButton" class="CancelReadyButton" onclick="CancelReady()">Cancel</button>
+
+            <button id="StartGame" class="StartGame" onclick="StartGame()">Start Game</button>
+        </div>
+
+        <div class="chat-container">
+            <div class="LobbyTitle">Lobby</div>
+            <textarea readonly id="messages" class="messages"></textarea>
+            <div class="inputmessage-container">
+                <input id="input" class="input" autocomplete="off" placeholder="Enter your message">
+                <input type="button" class="sendbutton" onclick="Send()" value="Send">
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <div id="game-container" class="game-container">
+        <div class="promptInput-container">
+            <h1>Battleground</h1>
+            <textarea id="PromptInput" placeholder="Describe what you are and how you want your battle goes (Your attributes, powerups, attacks, strategies, etc.)" class="promptInput"></textarea>
+            <button id="SubmitButton" class="SubmitButton" onclick="Submit()">Submit</button>
+            <div id="PlayerCounter" class="PlayerCounter">Waiting for other player: 0/4</div>
+        </div>
+    </div>
+
+
+    <!--      MAKE A LOADING SCREEN      -->
+    <div id="loading-container" class="loading-container">
+        <div class="loadingLabel-container">
+            <div class="keyboard">
+                <span class="key">L</span>
+                <span class="key">O</span>
+                <span class="key">A</span>
+                <span class="key">D</span>
+                <span class="key">I</span>
+                <span class="key">N</span>
+                <span class="key">G</span>
+            </div>
+            <div class="loader"></div>
+            <p align="center">All Players have submitted<br>Preparing Battlefield...</p>
+        </div>
+    </div>
+
+    <!--      MAKE A RESULT SCREEN      -->
+    <div id="result-container" class="result-container">
+        <img id="generatedImage" class="generatedImage" alt="Generated Image">
+
+        <div class="result-div">
+            <h1>So, this is how the story went...</h1>
+            <textarea readonly id="result-textarea"></textarea>
+            <button class="ExitButton" onclick="Exit()">Exit</button>
+        </div>
+
+        <audio id="ThemeSong" src="./Music/ThemeMusic.wav" loop preload="auto"></audio>
+    </div>
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
