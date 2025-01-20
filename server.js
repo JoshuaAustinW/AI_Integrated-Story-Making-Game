@@ -233,12 +233,14 @@ io.on('connection', (socket) => {
 
               GenerateImage({"inputs": "ANIME STYLE; "+SummarizeResponse}).then((response) => {
 
+                console.log('Image Generated Successfully');
+                
                 const imageUrl = `data:image/png;base64,${response}`;
         
                 io.emit('broadcast-ImgBlob', { id: socket.username, msg: imageUrl });
-  
+                
                 io.emit("GoToResult", response1);
-                socket.emit("TTS", response1);
+                io.emit("TTS", response1);
               
               }).catch((error) => {
                   console.error('Error fetching image:', error);
